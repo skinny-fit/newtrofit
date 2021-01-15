@@ -1,2 +1,2 @@
 # newtrofit
-Grpc client like retrofit.
+gRPC client like retrofit.

@@ -1,0 +1,27 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply plugin: 'com.google.protobuf'
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    implementation 'io.grpc:grpc-netty-shaded:1.35.0'
+    implementation 'io.grpc:grpc-protobuf:1.35.0'
+    implementation 'io.grpc:grpc-stub:1.35.0'
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.14.0'
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.35.0'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}
